@@ -3,20 +3,18 @@ class Figura {
     this.posicion = createVector(x,y);
     this.alto = alto;
     this.ancho = ancho;
-    this.fillred = 255;
-    this.fillgreen = 87;
-    this.fillblue = 57;
+    this.fillred = random(50,255);
+    this.fillgreen = random(50,255);
+    this.fillblue = random(50,255);
     this.velocidad = createVector(vx,vy);
   }
   update()
   {
-      if (this.posicion.x + this.ancho >= 400)
-        {  
-          let valor = random(3); 
-          this.velocidad.x = this.velocidad.x * -valor;
-         this.velocidad.y = this.velocidad.y * -valor;
-        }
-      this.posicion.add(this.velocidad);
+    this.posicion.add(this.velocidad);
+    if (this.posicion.x > width || this.posicion.x < 0)
+      this.velocidad.x *= -1;
+    if (this.posicion.y > height || this.posicion.y < 0)
+      this.velocidad.y *= -1;
   }
   
 }
